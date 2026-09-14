@@ -52,14 +52,14 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ projects, onRefr
       {/* Studio Banner */}
       <div className="bg-white p-6 sm:p-8 border border-obsidian-900/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <span className="text-[11px] uppercase tracking-architectural text-bronze-500 font-semibold font-mono">
-            // PANEL DE DIRECCIÓN GENERAL • MARTINA DELPAPA
+          <span className="text-[11px] uppercase tracking-architectural text-terracotta-600 font-semibold font-mono">
+            // PANEL DE DIRECCIÓN GENERAL • STEFANIA DEL PAPA
           </span>
           <h2 className="font-serif text-3xl text-obsidian-900 font-normal mt-1">
             Métricas del Estudio & Operaciones
           </h2>
           <p className="text-xs sm:text-sm text-obsidian-900/60 font-light mt-1">
-            Supervisión integral de proyectos activos, entregables de diseño y captación de clientes.
+            Supervisión integral de proyectos activos, entregables de diseño, mediciones BOQs y comisiones.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ projects, onRefr
               Sede Central
             </span>
             <span className="text-xs font-semibold text-obsidian-900">
-              Atelier Buenos Aires & Punta del Este
+              Sense Studio • Valencia & Italia
             </span>
             <span className="text-[10px] text-obsidian-900/50 font-mono mt-0.5">
               Estado: Operativo 100%
@@ -92,7 +92,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ projects, onRefr
             <span className="text-xs text-emerald-700 ml-2 font-medium">100% a tiempo</span>
           </div>
           <span className="text-[11px] text-obsidian-900/60 font-light">
-            En Recoleta, Punta del Este y Palermo
+            En Brindisi, Matera y Valencia
           </span>
         </div>
 

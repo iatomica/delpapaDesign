@@ -15,39 +15,39 @@ interface SpatialRenderResult {
   lighting: string;
 }
 
-// Curated high-resolution architectural interior visual bank
+// Curated high-resolution architectural interior visual bank from Stefania Del Papa Portfolio
 const ARCHITECTURAL_RENDER_BANK: Record<string, string[]> = {
   living: [
-    'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=85'
+    '/assets/portfolio/project-02-residencia/p12_img00_x378_2389x1346.webp',
+    '/assets/portfolio/project-02-residencia/p15_img00_x456_1434x1452.webp',
+    '/assets/portfolio/project-03-hotel-aurea/p22_img00_x567_2457x1134.webp'
   ],
   kitchen: [
-    'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=1600&q=85'
+    '/assets/portfolio/project-02-residencia/p13_img00_x385_2332x1313.webp'
   ],
   master_bedroom: [
-    'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1617325247661-675ab4b64ae2?auto=format&fit=crop&w=1600&q=85'
+    '/assets/portfolio/project-03-hotel-aurea/p21_img00_x562_2457x1383.webp',
+    '/assets/portfolio/project-03-hotel-aurea/p23_img00_x594_2457x1383.webp',
+    '/assets/portfolio/project-02-residencia/p17_img00_x512_1381x1408.webp',
+    '/assets/portfolio/project-01-masseria/p09_img01_x307_2250x1267.webp'
   ],
   dressing_room: [
-    'https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1600&q=85'
+    '/assets/portfolio/project-02-residencia/p17_img01_x514_1125x1408.webp'
   ],
   bathroom: [
-    'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=1600&q=85'
+    '/assets/portfolio/project-03-hotel-aurea/p24_img00_x597_1280x720.webp'
   ],
   terrace: [
-    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=85'
+    '/assets/portfolio/project-01-masseria/p06_img00_x275_1730x1297.webp',
+    '/assets/portfolio/project-01-masseria/p07_img00_x290_3300x2475.webp'
   ],
   workspace: [
-    'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=85',
-    'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=85'
+    '/assets/portfolio/project-04-showroom/p31_img00_x706_2459x1383.webp',
+    '/assets/portfolio/project-04-showroom/p32_img00_x710_2343x1319.webp'
+  ],
+  facade: [
+    '/assets/portfolio/project-04-showroom/p30_img00_x700_1919x1079.webp',
+    '/assets/portfolio/project-04-showroom/p34_img00_x722_2458x1383.webp'
   ]
 };
 

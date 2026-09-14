@@ -32,3 +32,4 @@ uploads/*
 !uploads/.gitkeep
 outputs/*
 !outputs/.gitkeep
+ejemplo/

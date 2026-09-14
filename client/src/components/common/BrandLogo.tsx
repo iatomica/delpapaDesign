@@ -33,10 +33,10 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ light = false, size = 'md'
       </svg>
       <div className="flex flex-col leading-none">
         <span className={`font-serif tracking-tight font-normal ${sizeConfig[size].text} ${textColor}`}>
-          DELPAPA
+          STEFANIA DEL PAPA
         </span>
         <span className={`tracking-widest uppercase font-medium mt-1 ${sizeConfig[size].sub} ${subColor}`}>
-          Interior Architecture & Consulting
+          Sense Studio • Interior Architecture
         </span>
       </div>
     </div>

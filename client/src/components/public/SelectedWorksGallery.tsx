@@ -17,15 +17,15 @@ export const SelectedWorksGallery: React.FC<SelectedWorksGalleryProps> = ({ proj
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
         <div>
-          <span className="text-xs uppercase tracking-architectural text-bronze-500 font-semibold block mb-2 font-mono">
+          <span className="text-xs uppercase tracking-architectural text-terracotta-600 font-semibold block mb-2 font-mono">
             // 02. OBRAS SELECCIONADAS
           </span>
           <h2 className="font-serif text-3xl sm:text-5xl text-obsidian-900 font-normal">
-            Comisiones Recientes
+            Proyectos & Obras de Autor
           </h2>
         </div>
         <p className="text-xs sm:text-sm text-obsidian-900/60 font-mono uppercase tracking-architectural max-w-xs">
-          Residencias privadas de escala y arquitectura interior personalizada
+          Hospitalidad de lujo, residencias privadas y arquitectura corporativa en Italia y España
         </p>
       </div>
 

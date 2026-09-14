@@ -14,10 +14,43 @@ export interface RenderSpec {
   id: string;
   projectId: string;
   title: string;
-  spaceType: 'living' | 'kitchen' | 'master_bedroom' | 'dressing_room' | 'bathroom' | 'terrace' | 'workspace';
-  style: 'japandi' | 'warm_minimalism' | 'brutalist_luxury' | 'contemporary_european' | 'wabi_sabi' | 'neoclassic_modern';
+  spaceType:
+    | 'living'
+    | 'kitchen'
+    | 'master_bedroom'
+    | 'bedroom'
+    | 'dressing_room'
+    | 'bathroom'
+    | 'terrace'
+    | 'outdoor'
+    | 'workspace'
+    | 'office'
+    | 'commercial'
+    | 'facade'
+    | 'technical_plan';
+  style:
+    | 'japandi'
+    | 'warm_minimalism'
+    | 'brutalist_luxury'
+    | 'contemporary_european'
+    | 'wabi_sabi'
+    | 'neoclassic_modern'
+    | 'mediterranean_luxury'
+    | 'quiet_luxury'
+    | 'biophilic_cave_luxury'
+    | 'sustainable_brutalist'
+    | 'architectural_drawing';
   materials: string[];
-  lighting: 'natural_morning' | 'golden_hour' | 'warm_architectural_2700k' | 'dramatic_chiaroscuro' | 'soft_diffuse';
+  lighting:
+    | 'natural_morning'
+    | 'golden_hour'
+    | 'warm_architectural_2700k'
+    | 'dramatic_chiaroscuro'
+    | 'soft_diffuse'
+    | 'natural_noon_3000k'
+    | 'rasante_indirecta'
+    | 'neutral_daylight'
+    | 'night_architectural';
   palette: string;
   prompt?: string;
   imageUrl: string;
@@ -58,7 +91,7 @@ export interface Project {
   renders: RenderSpec[];
   materialsCatalog: {
     name: string;
-    category: 'stone' | 'wood' | 'metal' | 'textile';
+    category: 'stone' | 'wood' | 'metal' | 'textile' | 'plaster' | 'glass';
     finish: string;
     supplier: string;
     sampleUrl: string;

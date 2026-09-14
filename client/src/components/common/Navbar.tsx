@@ -16,11 +16,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsultation }) => {
   const getRoleLabel = () => {
     switch (role) {
       case 'admin':
-        return 'Admin • Martina Delpapa';
+        return 'Admin • Stefania Del Papa';
       case 'designer':
         return 'Diseñadora • Elena Varela';
       case 'client':
-        return 'Cliente • Beras (Penthouse)';
+        return 'Cliente • Aurea Hospitality';
       default:
         return 'Visitante';
     }

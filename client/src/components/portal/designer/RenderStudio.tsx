@@ -29,9 +29,9 @@ export const RenderStudio: React.FC<RenderStudioProps> = ({
   const [style, setStyle] = useState<RenderSpec['style']>('warm_minimalism');
   const [lighting, setLighting] = useState<RenderSpec['lighting']>('natural_morning');
   const [materials, setMaterials] = useState<string[]>([
-    'Mármol Travertino Navona',
-    'Roble Europeo Ahumado',
-    'Lino Natural Belga',
+    'Toba Calcárea de Matera',
+    'Estuco de Cal Pugliese',
+    'Roble Europeo de Poro Abierto',
   ]);
   const [notes, setNotes] = useState('');
   const [aspectRatio, setAspectRatio] = useState<'16:9' | '4:3' | '1:1'>('16:9');
@@ -52,16 +52,16 @@ export const RenderStudio: React.FC<RenderStudioProps> = ({
   const activeProject = projects.find(p => p.id === selectedProjectId) || projects[0];
 
   const availableMaterials = [
-    'Mármol Travertino Navona',
-    'Roble Europeo Ahumado',
-    'Lino Natural Belga',
-    'Bronce Envejecido',
-    'Piedra Piasentina',
-    'Nogal Canaletto',
-    'Estuco de Cal Natural',
-    'Microcemento Marfil',
-    'Madera de Hinoki',
-    'Acero Inoxidable Mate',
+    'Toba Calcárea de Matera',
+    'Travertino Navona Apomazado',
+    'Estuco de Cal Pugliese',
+    'Roble Europeo de Poro Abierto',
+    'Vidrio Estriado Acanalado',
+    'Terciopelo Verde Bosque',
+    'Piedra Seca Tradicional',
+    'Hormigón Visto & Microcemento',
+    'Lino Puro Natural 580g',
+    'Acero Negro Mate & Bronce',
   ];
 
   const toggleMaterial = (mat: string) => {

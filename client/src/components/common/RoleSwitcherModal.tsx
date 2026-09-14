@@ -45,13 +45,13 @@ export const RoleSwitcherModal: React.FC<RoleSwitcherModalProps> = ({ isOpen, on
           </div>
           <div className="flex-1">
             <div className="flex items-center justify-between">
-              <span className="font-serif text-lg text-obsidian-900 font-medium">1. Admin (Directora Martina Delpapa)</span>
+              <span className="font-serif text-lg text-obsidian-900 font-medium">1. Admin (Directora Stefania Del Papa)</span>
               {role === 'admin' && (
                 <span className="text-[10px] tracking-architectural uppercase bg-obsidian-900 text-white px-2 py-0.5 font-mono">Activo</span>
               )}
             </div>
             <p className="text-xs text-obsidian-900/70 mt-1 leading-relaxed">
-              Supervisión global del estudio: proyectos activos, métricas de consultorías, entregables de diseño y bandeja de consultas entrantes.
+              Supervisión de Sense Studio: proyectos activos en Puglia, Matera y Valencia, métricas de consultorías, entregables de diseño y mediciones BOQs.
             </p>
           </div>
         </button>
@@ -76,7 +76,7 @@ export const RoleSwitcherModal: React.FC<RoleSwitcherModalProps> = ({ isOpen, on
               )}
             </div>
             <p className="text-xs text-obsidian-900/70 mt-1 leading-relaxed">
-              Estudio de Renders: composición y asignación de propuestas espaciales 3D, calibración de materiales y revisión de comentarios de los comitentes.
+              Estudio de Renders: composición y calibración de propuestas espaciales 3D en toba calcárea, travertino, estuco y roble, con revisión de comitentes.
             </p>
           </div>
         </button>
@@ -95,13 +95,13 @@ export const RoleSwitcherModal: React.FC<RoleSwitcherModalProps> = ({ isOpen, on
           </div>
           <div className="flex-1">
             <div className="flex items-center justify-between">
-              <span className="font-serif text-lg text-obsidian-900 font-medium">3. Cliente (Santiago & Clara Beras)</span>
+              <span className="font-serif text-lg text-obsidian-900 font-medium">3. Cliente (Comitente Aurea Hospitality)</span>
               {role === 'client' && (
                 <span className="text-[10px] tracking-architectural uppercase bg-obsidian-900 text-white px-2 py-0.5 font-mono">Activo</span>
               )}
             </div>
             <p className="text-xs text-obsidian-900/70 mt-1 leading-relaxed">
-              Portal privado del proyecto *Penthouse Alvear*: visualizador interactivo de renders en alta calidad, aprobación o solicitud de ajustes, muestras de materiales y estado de obra.
+              Portal privado de la obra *Masseria Contemporánea*: visualizador interactivo de renders WebP en alta calidad, aprobación o solicitud de ajustes y estado de obra.
             </p>
           </div>
         </button>

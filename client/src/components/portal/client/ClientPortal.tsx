@@ -47,9 +47,9 @@ export const ClientPortal: React.FC<ClientPortalProps> = ({ project, onRefreshPr
         project.id,
         selectedRender.id,
         feedbackText.trim(),
-        'Santiago & Clara Beras'
+        project.clientName || 'Comitente Aurea Hospitality'
       );
-      setActionSuccessMessage('Tus comentarios fueron enviados a la Arq. Elena Varela.');
+      setActionSuccessMessage('Tus comentarios fueron enviados al equipo de Sense Studio.');
       setFeedbackText('');
       onRefreshProject();
       setTimeout(() => {

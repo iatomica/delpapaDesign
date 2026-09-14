@@ -3,11 +3,11 @@ import { User } from '../types/index.js';
 export const SEED_USERS: (User & { passwordHash: string })[] = [
   {
     id: 'usr_admin_01',
-    name: 'Martina Delpapa',
+    name: 'Stefania Del Papa',
     email: 'admin@delpapadesign.com',
     role: 'admin',
-    title: 'Founder & Principal Architect',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    title: 'Founder & Creative Director // Sense Studio',
+    avatar: '/assets/portfolio/brand/p01_img00_x47_696x899.webp',
     passwordHash: 'admin123',
   },
   {
@@ -21,12 +21,12 @@ export const SEED_USERS: (User & { passwordHash: string })[] = [
   },
   {
     id: 'usr_client_01',
-    name: 'Santiago & Clara Beras',
+    name: 'Comitente Aurea Hospitality',
     email: 'client@delpapadesign.com',
     role: 'client',
-    title: 'Propietarios - Penthouse Alvear',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
-    activeProjectId: 'proj_alvear_01',
+    title: 'Comitente Obra Masseria Contemporánea',
+    avatar: '/assets/portfolio/project-01-masseria/p06_img00_x275_1730x1297.webp',
+    activeProjectId: 'proj_masseria_01',
     passwordHash: 'client123',
   },
 ];

@@ -22,6 +22,19 @@ export default {
           600: '#6C583B',
           700: '#53432B',
         },
+        terracotta: {
+          300: '#D5B493',
+          400: '#C59F7C',
+          500: '#B59675',
+          600: '#9E7E5D',
+          700: '#846647',
+        },
+        calc: {
+          50: '#FBF9F6',
+          100: '#F7F5F0',
+          200: '#F2EDE5',
+          300: '#E8E1D5',
+        },
         obsidian: {
           800: '#262422',
           850: '#1F1D1B',
@@ -30,8 +43,8 @@ export default {
         },
       },
       fontFamily: {
-        serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['Lora', '"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['"IBM Plex Sans"', '"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       letterSpacing: {
