@@ -3,21 +3,21 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy root manifests
+# Copy root and workspace manifests
 COPY package.json ./
 COPY server/package.json ./server/
 COPY client/package.json ./client/
 
-# Install dependencies for both server and client
-RUN npm install
+# Install all dependencies including devDependencies
+RUN npm install --include=dev
 
 # Copy source files
 COPY server/ ./server/
 COPY client/ ./client/
 
-# Build backend and frontend
-RUN /app/node_modules/.bin/tsc -p server/tsconfig.json
-RUN cd client && /app/node_modules/.bin/vite build
+# Build backend and frontend invoking node binaries directly
+RUN node node_modules/typescript/bin/tsc -p server/tsconfig.json
+RUN cd client && node /app/node_modules/vite/bin/vite.js build
 
 # Stage 2: Production runner
 FROM node:20-alpine AS runner

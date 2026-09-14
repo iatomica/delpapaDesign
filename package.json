@@ -20,5 +20,9 @@
     "delpapa-design"
   ],
   "author": "Delpapa Design Studio",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7"
+  }
 }
