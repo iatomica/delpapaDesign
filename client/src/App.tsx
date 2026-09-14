@@ -106,7 +106,7 @@ export const App: React.FC = () => {
                   { id: 'proposals', label: 'Entregas & Planos' },
                 ]
               : [
-                  { id: 'main', label: 'Mi Proyecto (Penthouse Alvear)' },
+                  { id: 'main', label: clientProject ? `Mi Proyecto (${clientProject.title})` : 'Mi Proyecto' },
                   { id: 'renders', label: 'Renders 3D & Feedback' },
                 ]
           }
