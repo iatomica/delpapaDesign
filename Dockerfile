@@ -9,6 +9,7 @@ COPY server/package.json ./server/
 COPY client/package.json ./client/
 
 # Install dependencies for both server and client
+ENV PATH="/app/node_modules/.bin:$PATH"
 RUN npm install
 
 # Copy source files
