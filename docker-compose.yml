@@ -1,0 +1,13 @@
+services:
+  delpapa-design:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: delpapa-design-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-http://localhost:3000}

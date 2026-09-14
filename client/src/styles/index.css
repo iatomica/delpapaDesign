@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg-travertine: #FAF8F5;
+    --color-surface-stone: #F3EFEA;
+    --color-obsidian: #161514;
+    --color-bronze: #846F4E;
+  }
+
+  body {
+    background-color: var(--color-bg-travertine);
+    color: var(--color-obsidian);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-feature-settings: "liga" 1, "dlig" 1;
+  }
+}
+
+/* Taste Skill: Tactile buttons & hairline architectural dividers */
+.hairline-b {
+  border-bottom: 1px solid rgba(22, 21, 20, 0.08);
+}
+
+.hairline-t {
+  border-top: 1px solid rgba(22, 21, 20, 0.08);
+}
+
+.hairline-all {
+  border: 1px solid rgba(22, 21, 20, 0.08);
+}
+
+.hairline-dark-all {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-tactile {
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-tactile:active {
+  transform: scale(0.98);
+}
+
+/* Glassmorphic luxury panel */
+.luxury-glass {
+  background: rgba(250, 248, 245, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(22, 21, 20, 0.06);
+}
+
+.luxury-glass-dark {
+  background: rgba(22, 21, 20, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3EFEA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C7BBA8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9C8F7A;
+}
