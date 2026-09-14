@@ -9,15 +9,15 @@ COPY server/package.json ./server/
 COPY client/package.json ./client/
 
 # Install dependencies for both server and client
-ENV PATH="/app/node_modules/.bin:$PATH"
 RUN npm install
 
 # Copy source files
 COPY server/ ./server/
 COPY client/ ./client/
 
-# Build client and server
-RUN npm run build
+# Build backend and frontend
+RUN /app/node_modules/.bin/tsc -p server/tsconfig.json
+RUN cd client && /app/node_modules/.bin/vite build
 
 # Stage 2: Production runner
 FROM node:20-alpine AS runner
