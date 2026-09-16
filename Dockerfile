@@ -11,8 +11,8 @@ WORKDIR /app
 # Copy dependency manifests
 COPY package.json package-lock.json ./
 
-# Install dependencies clean & fast
-RUN npm ci
+# Install dependencies clean & fast (including devDependencies for build)
+RUN npm ci --include=dev
 
 # Copy application source code and pre-rendered assets
 COPY . .
