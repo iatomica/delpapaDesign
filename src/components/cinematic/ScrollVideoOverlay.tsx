@@ -8,25 +8,31 @@ interface ScrollVideoOverlayProps {
   reducedMotion?: boolean;
 }
 
-export function ScrollVideoOverlay({ progress, reducedMotion }: ScrollVideoOverlayProps) {
-  // Helper for computing smooth fade curves for ranges [start, peak, end]
-  const getOpacity = (start: number, peakIn: number, peakOut: number, end: number) => {
-    if (progress < start || progress > end) return 0;
-    if (progress >= peakIn && progress <= peakOut) return 1;
-    if (progress < peakIn) {
-      return (progress - start) / (peakIn - start);
-    }
-    return 1 - (progress - peakOut) / (end - peakOut);
-  };
+// Hermite smoothstep for velvety, non-linear opacity transitions (eliminates abrupt steps)
+function smoothstep(min: number, max: number, val: number): number {
+  const x = Math.max(0, Math.min(1, (val - min) / (max - min)));
+  return x * x * (3 - 2 * x);
+}
 
-  const op1 = getOpacity(0.0, 0.05, 0.18, 0.26);
-  const op2 = getOpacity(0.25, 0.33, 0.48, 0.56);
-  const op3 = getOpacity(0.55, 0.63, 0.77, 0.84);
-  const op4 = getOpacity(0.82, 0.88, 0.98, 1.0);
+function getSmoothOpacity(start: number, peakIn: number, peakOut: number, end: number, p: number): number {
+  if (p <= start || p >= end) return 0;
+  if (p >= peakIn && p <= peakOut) return 1;
+  if (p < peakIn) {
+    return smoothstep(start, peakIn, p);
+  }
+  return 1 - smoothstep(peakOut, end, p);
+}
+
+export function ScrollVideoOverlay({ progress, reducedMotion }: ScrollVideoOverlayProps) {
+  // Broad, overlapping, stabilized opacity ranges for 650vh travel
+  const op1 = getSmoothOpacity(0.00, 0.05, 0.20, 0.28, progress);
+  const op2 = getSmoothOpacity(0.26, 0.35, 0.50, 0.58, progress);
+  const op3 = getSmoothOpacity(0.56, 0.65, 0.78, 0.85, progress);
+  const op4 = getSmoothOpacity(0.83, 0.89, 0.98, 1.00, progress);
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-20 flex flex-col justify-between p-6 md:p-12 lg:p-16">
-      {/* Top subtle badge */}
+    <div className="absolute inset-0 pointer-events-none z-20 flex flex-col justify-between p-6 md:p-12 lg:p-16 select-none">
+      {/* Top subtle status badge */}
       <div className="flex items-center justify-between text-xs tracking-[0.2em] text-[#EDEAE4]/70 uppercase font-sans">
         <div className="flex items-center gap-2">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C2A77A] animate-pulse" />
@@ -39,15 +45,18 @@ export function ScrollVideoOverlay({ progress, reducedMotion }: ScrollVideoOverl
         </div>
       </div>
 
-      {/* Main Centered / Dynamic Storytelling Overlays */}
-      <div className="relative w-full max-w-5xl mx-auto my-auto flex items-center justify-center min-h-[320px]">
+      {/* Main Centered / Perfectly Stabilized Editorial Overlays */}
+      <div className="relative w-full max-w-5xl mx-auto my-auto flex items-center justify-center min-h-[360px]">
         {/* Scene 1: Brand Introduction */}
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-300"
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
           style={{
             opacity: op1,
-            transform: reducedMotion ? "none" : `translateY(${(0.13 - progress) * 40}px)`,
-            pointerEvents: op1 > 0.4 ? "auto" : "none"
+            pointerEvents: op1 > 0.3 ? "auto" : "none",
+            transform: "translate3d(0, 0, 0)",
+            willChange: "opacity",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
           }}
         >
           <p className="editorial-mono text-[#C2A77A] mb-3 tracking-[0.3em]">
@@ -56,18 +65,21 @@ export function ScrollVideoOverlay({ progress, reducedMotion }: ScrollVideoOverl
           <h1 className="editorial-title text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-[#EDEAE4] mb-4">
             SENSE
           </h1>
-          <p className="text-sm md:text-base tracking-[0.2em] text-[#D9D2C3]/80 uppercase font-sans">
+          <p className="text-sm md:text-base tracking-[0.25em] text-[#D9D2C3]/80 uppercase font-sans">
             By Stefania Del Papa
           </p>
         </div>
 
         {/* Scene 2: Brand Manifesto */}
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center text-center max-w-3xl mx-auto transition-all duration-300"
+          className="absolute inset-0 flex flex-col items-center justify-center text-center max-w-3xl mx-auto px-4"
           style={{
             opacity: op2,
-            transform: reducedMotion ? "none" : `translateY(${(0.40 - progress) * 40}px)`,
-            pointerEvents: op2 > 0.4 ? "auto" : "none"
+            pointerEvents: op2 > 0.3 ? "auto" : "none",
+            transform: "translate3d(0, 0, 0)",
+            willChange: "opacity",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
           }}
         >
           <span className="editorial-mono text-[#C2A77A] mb-4 tracking-[0.25em]">
@@ -83,11 +95,14 @@ export function ScrollVideoOverlay({ progress, reducedMotion }: ScrollVideoOverl
 
         {/* Scene 3: Materiality & Spatial Geometry */}
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center text-center max-w-2xl mx-auto transition-all duration-300"
+          className="absolute inset-0 flex flex-col items-center justify-center text-center max-w-2xl mx-auto px-4"
           style={{
             opacity: op3,
-            transform: reducedMotion ? "none" : `translateY(${(0.70 - progress) * 40}px)`,
-            pointerEvents: op3 > 0.4 ? "auto" : "none"
+            pointerEvents: op3 > 0.3 ? "auto" : "none",
+            transform: "translate3d(0, 0, 0)",
+            willChange: "opacity",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
           }}
         >
           <div className="flex items-center gap-2 mb-4 text-[#C2A77A]">
@@ -104,11 +119,14 @@ export function ScrollVideoOverlay({ progress, reducedMotion }: ScrollVideoOverl
 
         {/* Scene 4: Exploration / Continuation */}
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-300"
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
           style={{
             opacity: op4,
-            transform: reducedMotion ? "none" : `translateY(${(0.92 - progress) * 40}px)`,
-            pointerEvents: op4 > 0.4 ? "auto" : "none"
+            pointerEvents: op4 > 0.3 ? "auto" : "none",
+            transform: "translate3d(0, 0, 0)",
+            willChange: "opacity",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
           }}
         >
           <span className="editorial-mono text-[#C2A77A] mb-3 tracking-[0.25em]">
@@ -118,16 +136,16 @@ export function ScrollVideoOverlay({ progress, reducedMotion }: ScrollVideoOverl
             Colección de Espacios
           </h2>
           <div className="flex flex-wrap items-center justify-center gap-3 text-xs tracking-wider text-[#D9D2C3]">
-            <span className="px-3 py-1.5 rounded-full border border-white/10 bg-black/40 backdrop-blur-sm">
+            <span className="px-3.5 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md shadow-lg">
               01. Masseria Contemporánea
             </span>
-            <span className="px-3 py-1.5 rounded-full border border-white/10 bg-black/40 backdrop-blur-sm">
+            <span className="px-3.5 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md shadow-lg">
               02. Residencia Privada
             </span>
-            <span className="px-3 py-1.5 rounded-full border border-white/10 bg-black/40 backdrop-blur-sm">
+            <span className="px-3.5 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md shadow-lg">
               03. Boutique Hotel Aurea
             </span>
-            <span className="px-3 py-1.5 rounded-full border border-white/10 bg-black/40 backdrop-blur-sm">
+            <span className="px-3.5 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md shadow-lg">
               04. Showroom Corporativo
             </span>
           </div>
@@ -137,10 +155,10 @@ export function ScrollVideoOverlay({ progress, reducedMotion }: ScrollVideoOverl
       {/* Bottom status & scroll indicator */}
       <div className="flex items-end justify-between text-xs text-[#A6A095] tracking-widest font-sans uppercase">
         <div className="flex items-center gap-3">
-          <div className="w-16 sm:w-28 h-[2px] bg-white/10 overflow-hidden rounded-full">
+          <div className="w-20 sm:w-32 h-[2px] bg-white/10 overflow-hidden rounded-full">
             <div
-              className="h-full bg-[#C2A77A] transition-all duration-100 ease-out"
-              style={{ width: `${Math.max(4, progress * 100)}%` }}
+              className="h-full bg-[#C2A77A] transition-transform duration-100 ease-out origin-left"
+              style={{ transform: `scaleX(${Math.max(0.04, progress)})` }}
             />
           </div>
           <span className="text-[10px] text-[#C2A77A] font-mono">

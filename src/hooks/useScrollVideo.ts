@@ -27,6 +27,7 @@ export function useScrollVideo({
   const isSeekingRef = useRef(false);
   const rafIdRef = useRef<number | null>(null);
   const progressRef = useRef(0);
+  const lastProgressRef = useRef(0);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -118,7 +119,12 @@ export function useScrollVideo({
       onUpdate: (self) => {
         const pr = self.progress;
         progressRef.current = pr;
-        setProgress(pr);
+
+        // Only trigger React state update on meaningful progress change (1000 silky steps)
+        if (Math.abs(pr - lastProgressRef.current) >= 0.001 || pr === 0 || pr === 1) {
+          lastProgressRef.current = pr;
+          setProgress(pr);
+        }
 
         if (video && video.duration && !reducedMotion) {
           targetTimeRef.current = pr * video.duration;
