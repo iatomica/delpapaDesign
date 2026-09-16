@@ -86,7 +86,7 @@ export function useScrollVideo({
         // Only seek if video decoder is not currently busy
         if (!isSeekingRef.current && !video.seeking) {
           const delta = targetTimeRef.current - currentTimeRef.current;
-          currentTimeRef.current += delta * 0.18; // smooth easing
+          currentTimeRef.current += delta * 0.12; // silky luxury easing
 
           if (Math.abs(video.currentTime - currentTimeRef.current) > eps) {
             try {

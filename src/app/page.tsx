@@ -15,12 +15,12 @@ export default function Home() {
       {/* Floating Navigation */}
       <Navbar />
 
-      {/* Hero: Scroll-Scrubbed Cinematic Flight into Architectural Space */}
+      {/* Hero: Scroll-Scrubbed Cinematic Flight into Architectural Space (Expanded travel for deliberate pacing) */}
       <ScrollVideoSection
         desktopSrc="/media/video/sense-desktop.mp4"
         mobileSrc="/media/video/sense-mobile.mp4"
         poster="/media/posters/sense-poster.webp"
-        scrollLength="350vh"
+        scrollLength="650vh"
         objectPosition="center center"
       />
 
