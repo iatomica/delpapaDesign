@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+:root {
+  --bg-dark: #0D0C0B;
+  --bg-surface-dark: #161514;
+  --bg-card-dark: #1C1B19;
+  --bg-light: #F7F5F0;
+  --bg-surface-light: #EFECE4;
+  
+  --color-sand: #D9D2C3;
+  --color-bone: #F5F2EB;
+  --color-terracotta: #B35E42;
+  --color-terracotta-light: #CE8167;
+  --color-gold: #C2A77A;
+  --color-gold-muted: #8F7B5A;
+  
+  --ink-primary: #EDEAE4;
+  --ink-secondary: #A6A095;
+  --ink-muted: #6B665E;
+  
+  --ink-dark-primary: #171615;
+  --ink-dark-secondary: #59554E;
+  --ink-dark-muted: #8A847A;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(0, 0, 0, 0.08);
+  --border-gold: rgba(194, 167, 122, 0.3);
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg-dark);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* Typography styles */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Quiet luxury editorial headings */
+.editorial-title {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-weight: 300;
+}
+
+.editorial-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.editorial-mono {
+  font-family: var(--font-sans);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  font-weight: 500;
+}
+
+/* Glassmorphism & borders */
+.glass-panel {
+  background: rgba(22, 21, 20, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-panel-light {
+  background: rgba(247, 245, 240, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-light);
+}
+
+/* Tactile buttons */
+.btn-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-editorial-primary {
+  background-color: var(--color-bone);
+  color: var(--ink-dark-primary);
+  border: 1px solid transparent;
+}
+
+.btn-editorial-primary:hover {
+  background-color: var(--color-gold);
+  color: var(--bg-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(194, 167, 122, 0.25);
+}
+
+.btn-editorial-outline {
+  background: transparent;
+  color: var(--ink-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-editorial-outline:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+/* Architectural grid line details */
+.fine-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+  width: 100%;
+}
+
+.fine-line-vertical {
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--border-subtle), transparent);
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
