@@ -1,33 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 :root {
+  --bg-main: #f5f2ed;
+  --bg-card: #ffffff;
+  --bg-sand: #e8dfd5;
+  --bg-sand-dark: #dfd3c3;
+  --bg-footer: #ded6cb;
   --bg-dark: #0D0C0B;
-  --bg-surface-dark: #161514;
-  --bg-card-dark: #1C1B19;
-  --bg-light: #F7F5F0;
-  --bg-surface-light: #EFECE4;
-  
-  --color-sand: #D9D2C3;
-  --color-bone: #F5F2EB;
-  --color-terracotta: #B35E42;
-  --color-terracotta-light: #CE8167;
-  --color-gold: #C2A77A;
-  --color-gold-muted: #8F7B5A;
-  
-  --ink-primary: #EDEAE4;
-  --ink-secondary: #A6A095;
-  --ink-muted: #6B665E;
-  
-  --ink-dark-primary: #171615;
-  --ink-dark-secondary: #59554E;
-  --ink-dark-muted: #8A847A;
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-light: rgba(0, 0, 0, 0.08);
-  --border-gold: rgba(194, 167, 122, 0.3);
+  --color-gold: #b49775;
+  --color-gold-hover: #9c805f;
+  --color-body: #9e918a;
+  --color-body-dark: #5c5550;
+  --color-ivory: #f5f2ed;
 
-  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --border-subtle: rgba(180, 151, 117, 0.25);
+  --border-light: rgba(0, 0, 0, 0.06);
+
+  --font-serif: "Libre Baskerville", "Baskerville PT", Baskerville, Georgia, serif;
+  --font-sans: "Lato", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 * {
@@ -35,9 +27,10 @@
 }
 
 html {
-  background-color: var(--bg-dark);
-  color: var(--ink-primary);
+  background-color: var(--bg-main);
+  color: var(--color-body);
   font-family: var(--font-sans);
+  font-weight: 300;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -45,20 +38,20 @@ html {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+  background: #ede8e1;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
+  background: #c8baa9;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-gold);
 }
 
-/* Typography styles */
+/* Typography styles matching Stefania's specs */
 .font-serif {
   font-family: var(--font-serif);
 }
@@ -67,93 +60,106 @@ html {
   font-family: var(--font-sans);
 }
 
-/* Quiet luxury editorial headings */
-.editorial-title {
+.baskerville-title {
   font-family: var(--font-serif);
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  font-weight: 300;
+  color: var(--color-gold);
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
-.editorial-italic {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 300;
-}
-
-.editorial-mono {
+.lato-body {
   font-family: var(--font-sans);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-size: 0.72rem;
-  font-weight: 500;
+  color: var(--color-body);
+  font-weight: 300;
+  line-height: 1.75;
 }
 
-/* Glassmorphism & borders */
-.glass-panel {
-  background: rgba(22, 21, 20, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-}
-
-.glass-panel-light {
-  background: rgba(247, 245, 240, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-light);
-}
-
-/* Tactile buttons */
-.btn-editorial {
+/* Editorial Buttons */
+.btn-gold {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.6rem;
-  padding: 0.85rem 1.6rem;
+  background-color: #bfa07d;
+  color: #ffffff;
+  font-family: var(--font-serif);
   font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  font-weight: 500;
+  padding: 0.75rem 2rem;
   border-radius: 9999px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(191, 160, 125, 0.25);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-gold:hover {
+  background-color: var(--color-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(180, 151, 117, 0.35);
+}
+
+/* Rounded carousel cards */
+.carousel-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   cursor: pointer;
 }
 
-.btn-editorial-primary {
-  background-color: var(--color-bone);
-  color: var(--ink-dark-primary);
-  border: 1px solid transparent;
+.carousel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
 }
 
-.btn-editorial-primary:hover {
-  background-color: var(--color-gold);
-  color: var(--bg-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(194, 167, 122, 0.25);
+.carousel-card-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  padding: 1.5rem;
+  text-align: center;
 }
 
-.btn-editorial-outline {
-  background: transparent;
-  color: var(--ink-primary);
-  border: 1px solid var(--border-subtle);
+.carousel-card:hover .carousel-card-overlay {
+  opacity: 1;
 }
 
-.btn-editorial-outline:hover {
-  border-color: var(--color-gold);
-  color: var(--color-gold);
-  transform: translateY(-2px);
+/* Entrance Animations */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-/* Architectural grid line details */
-.fine-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
-  width: 100%;
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.fine-line-vertical {
-  width: 1px;
-  background: linear-gradient(180deg, transparent, var(--border-subtle), transparent);
+/* Double ring for portraits and circular diagrams */
+.double-ring-gold {
+  position: relative;
+  border-radius: 9999px;
+  border: 3px solid #dfd3c3;
+  padding: 4px;
+}
+
+.double-ring-gold::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 1px solid #b49775;
+  pointer-events: none;
 }
 
 /* Reduced motion overrides */

@@ -2,20 +2,20 @@ import React from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollVideoSection } from "@/components/cinematic/ScrollVideoSection";
-import { ManifestoSection } from "@/components/sections/ManifestoSection";
-import { ProjectShowcase } from "@/components/sections/ProjectShowcase";
-import { MaterialityGallery } from "@/components/sections/MaterialityGallery";
-import { TechnicalPlansSection } from "@/components/sections/TechnicalPlansSection";
+import { HeroStatement } from "@/components/sections/HeroStatement";
 import { AboutStefania } from "@/components/sections/AboutStefania";
+import { ProjectsCarousel } from "@/components/sections/ProjectsCarousel";
+import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { SectionAnimator } from "@/components/ui/EntranceAnimation";
 
 export default function Home() {
   return (
-    <main className="relative w-full min-h-screen bg-[#0D0C0B] text-[#EDEAE4]">
-      {/* Floating Navigation */}
+    <main className="relative w-full min-h-screen bg-[#f5f2ed] text-[#9e918a]">
+      {/* Floating Navigation with Language Switcher */}
       <Navbar />
 
-      {/* Hero: Scroll-Scrubbed Cinematic Flight into Architectural Space (Expanded travel for deliberate pacing) */}
+      {/* Hero: Scroll-Scrubbed Cinematic Flight into Architectural Space */}
       <ScrollVideoSection
         desktopSrc="/media/video/sense-desktop.mp4"
         mobileSrc="/media/video/sense-mobile.mp4"
@@ -24,26 +24,26 @@ export default function Home() {
         objectPosition="center center"
       />
 
-      {/* Brand Manifesto & Spatial Philosophy */}
-      <ManifestoSection />
+      {/* Central Radiant Flare & Statement */}
+      <HeroStatement />
 
-      {/* Featured Architectural Projects */}
-      <ProjectShowcase />
-
-      {/* Materiality Study & Moodboard Research */}
-      <MaterialityGallery />
-
-      {/* Technical Rigor & Architectural Plans */}
-      <TechnicalPlansSection />
-
-      {/* Stefania Del Papa — Creative Director Profile */}
+      {/* ✦ ESTUDIO. — Stefania Del Papa Profile & Architecture / Sensory Comfort */}
       <AboutStefania />
 
-      {/* Inquiries & Studio Coordinates */}
+      {/* ✦ PROYECTOS. — Interactive Destudio-Style Carousel with Rounded Borders */}
+      <ProjectsCarousel />
+
+      {/* ✦ ¿CÒMO TRABAJAMOS? — 4 Alternating Phases with Circular Gold Highlights */}
+      <HowWeWorkSection />
+
+      {/* ✦ CONTACTANOS. — Consultation Inquiries & Studio Coordinates */}
       <ContactSection />
 
-      {/* Architectural Quiet Luxury Footer */}
+      {/* Editorial Footer with Social Links & Language Switcher */}
       <Footer />
+
+      {/* Subtle Entrance Animation Observer */}
+      <SectionAnimator />
     </main>
   );
 }

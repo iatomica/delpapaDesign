@@ -1,24 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  variable: "--font-cormorant",
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-  display: "swap"
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap"
-});
-
 export const viewport: Viewport = {
-  themeColor: "#0D0C0B",
+  themeColor: "#f5f2ed",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -26,35 +10,34 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://sense.iatomica.com"),
-  title: "SENSE | Stefania Del Papa — Architecture & High-End Interior Design",
+  title: "SENSE by Stefania Del Papa | Estudio de Diseño Interior",
   description:
-    "Transformamos el espacio en una experiencia sensorial a medida. Portafolio de arquitectura interior de lujo, hospitalidad y mobiliario bespoke en Valencia, Buenos Aires y el sur de Italia.",
+    "Filosofía proyectual: Transformamos el espacio en una experiencia sensorial a medida. Interiorismo residencial de alto nivel, reformas complejas y proyectos de hospitality.",
   keywords: [
-    "Interior Design",
+    "SENSE",
     "Stefania Del Papa",
-    "SENSE Studio",
-    "Quiet Luxury",
-    "Architecture Portfolio",
-    "Hospitality Design",
-    "Boutique Hotel Aurea",
-    "Masseria Contemporánea",
-    "Matera",
+    "Diseño Interior",
+    "Interiorismo",
+    "Estudio de diseño interior",
+    "Residencia Privada",
+    "Hospitality & Resort",
+    "Valencia",
     "Brindisi",
-    "Valencia"
+    "Buenos Aires"
   ],
   authors: [{ name: "Stefania Del Papa" }],
   creator: "Stefania Del Papa",
   openGraph: {
-    title: "SENSE | Stefania Del Papa — Architecture & Interior Design",
+    title: "SENSE by Stefania Del Papa | Estudio de Diseño Interior",
     description: "Transformamos el espacio en una experiencia sensorial a medida.",
     url: "https://sense.iatomica.com",
-    siteName: "SENSE By Stefania Del Papa",
+    siteName: "SENSE by Stefania Del Papa",
     images: [
       {
-        url: "/media/images/projects/aurea-hero.webp",
+        url: "/media/images/projects/residencia-hero.webp",
         width: 1920,
         height: 1081,
-        alt: "SENSE - Interior Design & Architecture Portfolio"
+        alt: "SENSE by Stefania Del Papa"
       }
     ],
     locale: "es_ES",
@@ -62,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SENSE | Stefania Del Papa",
+    title: "SENSE by Stefania Del Papa",
     description: "Transformamos el espacio en una experiencia sensorial a medida.",
-    images: ["/media/images/projects/aurea-hero.webp"]
+    images: ["/media/images/projects/residencia-hero.webp"]
   },
   robots: {
     index: true,
@@ -78,8 +61,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={`${cormorant.variable} ${jakarta.variable}`}>
-      <body className="bg-[#0D0C0B] text-[#EDEAE4] selection:bg-[#C2A77A]/30 selection:text-[#EDEAE4] overflow-x-hidden min-h-screen">
+    <html lang="es">
+      <body className="bg-[#f5f2ed] text-[#9e918a] selection:bg-[#b49775]/25 selection:text-[#b49775] overflow-x-hidden min-h-screen">
         {children}
       </body>
     </html>

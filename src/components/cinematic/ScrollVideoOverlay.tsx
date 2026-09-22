@@ -1,14 +1,14 @@
 "use client";
 
 import React from "react";
-import { ArrowDown, Compass } from "lucide-react";
+import Image from "next/image";
+import { ArrowDown } from "lucide-react";
 
 interface ScrollVideoOverlayProps {
   progress: number;
   reducedMotion?: boolean;
 }
 
-// Hermite smoothstep for velvety, non-linear opacity transitions (eliminates abrupt steps)
 function smoothstep(min: number, max: number, val: number): number {
   const x = Math.max(0, Math.min(1, (val - min) / (max - min)));
   return x * x * (3 - 2 * x);
@@ -23,31 +23,30 @@ function getSmoothOpacity(start: number, peakIn: number, peakOut: number, end: n
   return 1 - smoothstep(peakOut, end, p);
 }
 
-export function ScrollVideoOverlay({ progress, reducedMotion }: ScrollVideoOverlayProps) {
-  // Broad, overlapping, stabilized opacity ranges for 650vh travel
-  const op1 = getSmoothOpacity(0.00, 0.05, 0.20, 0.28, progress);
-  const op2 = getSmoothOpacity(0.26, 0.35, 0.50, 0.58, progress);
-  const op3 = getSmoothOpacity(0.56, 0.65, 0.78, 0.85, progress);
-  const op4 = getSmoothOpacity(0.83, 0.89, 0.98, 1.00, progress);
+export function ScrollVideoOverlay({ progress }: ScrollVideoOverlayProps) {
+  // Broad, stabilized opacity ranges
+  const op1 = getSmoothOpacity(0.00, 0.05, 0.28, 0.38, progress);
+  const op2 = getSmoothOpacity(0.36, 0.48, 0.68, 0.78, progress);
+  const op3 = getSmoothOpacity(0.76, 0.85, 0.98, 1.00, progress);
 
   return (
     <div className="absolute inset-0 pointer-events-none z-20 flex flex-col justify-between p-6 md:p-12 lg:p-16 select-none">
-      {/* Top subtle status badge */}
+      {/* Top status indicator */}
       <div className="flex items-center justify-between text-xs tracking-[0.2em] text-[#EDEAE4]/70 uppercase font-sans">
         <div className="flex items-center gap-2">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C2A77A] animate-pulse" />
-          <span>Cinematic Walkthrough</span>
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#b49775] animate-pulse" />
+          <span className="tracking-widest text-[10px] text-[#b49775]">Estudio de Diseño Interior</span>
         </div>
-        <div className="hidden sm:flex items-center gap-4 text-[#A6A095]">
-          <span>Matera · Brindisi · Valencia</span>
+        <div className="hidden sm:flex items-center gap-4 text-[#EDEAE4]/80 text-[10px]">
+          <span>Valencia · Brindisi · Buenos Aires</span>
           <span>·</span>
           <span>{Math.round(progress * 100)}%</span>
         </div>
       </div>
 
-      {/* Main Centered / Perfectly Stabilized Editorial Overlays */}
+      {/* Main Centered Overlays */}
       <div className="relative w-full max-w-5xl mx-auto my-auto flex items-center justify-center min-h-[360px]">
-        {/* Scene 1: Brand Introduction */}
+        {/* Scene 1: Brand Introduction with Official Logo */}
         <div
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
           style={{
@@ -55,19 +54,20 @@ export function ScrollVideoOverlay({ progress, reducedMotion }: ScrollVideoOverl
             pointerEvents: op1 > 0.3 ? "auto" : "none",
             transform: "translate3d(0, 0, 0)",
             willChange: "opacity",
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
           }}
         >
-          <p className="editorial-mono text-[#C2A77A] mb-3 tracking-[0.3em]">
-            Studio di Architettura & Interior Design
+          <p className="font-serif text-[#b49775] mb-4 text-xs md:text-sm tracking-[0.3em] uppercase">
+            Estudio de diseño interior
           </p>
-          <h1 className="editorial-title text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-[#EDEAE4] mb-4">
-            SENSE
-          </h1>
-          <p className="text-sm md:text-base tracking-[0.25em] text-[#D9D2C3]/80 uppercase font-sans">
-            By Stefania Del Papa
-          </p>
+          <div className="relative w-[300px] sm:w-[460px] md:w-[580px] h-[120px] sm:h-[160px] md:h-[200px] mb-2 drop-shadow-2xl">
+            <Image
+              src="/media/images/brand/logo.png"
+              alt="SENSE by Stefania Del Papa"
+              fill
+              priority
+              className="object-contain filter drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]"
+            />
+          </div>
         </div>
 
         {/* Scene 2: Brand Manifesto */}
@@ -78,97 +78,66 @@ export function ScrollVideoOverlay({ progress, reducedMotion }: ScrollVideoOverl
             pointerEvents: op2 > 0.3 ? "auto" : "none",
             transform: "translate3d(0, 0, 0)",
             willChange: "opacity",
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
           }}
         >
-          <span className="editorial-mono text-[#C2A77A] mb-4 tracking-[0.25em]">
+          <span className="font-serif text-[#b49775] mb-5 tracking-[0.25em] text-xs uppercase">
             Filosofía Proyectual
           </span>
-          <blockquote className="editorial-title text-3xl sm:text-5xl md:text-6xl text-[#EDEAE4] leading-[1.15] font-light">
+          <blockquote className="font-serif text-2xl sm:text-4xl md:text-5xl text-[#f5f2ed] leading-[1.2] font-normal drop-shadow-lg">
             &ldquo;Transformamos el espacio en una experiencia sensorial a medida.&rdquo;
           </blockquote>
-          <p className="mt-6 text-xs sm:text-sm text-[#A6A095] max-w-lg tracking-wider font-light leading-relaxed">
-            Arquitectura interior de alta gama, lujo silencioso y balance biofílico en hospitalidad y residencias exclusivas.
+          <p className="mt-6 text-xs sm:text-sm text-[#d9d2c3] max-w-lg tracking-wider font-light leading-relaxed drop-shadow">
+            Residencias privadas de alto nivel y proyectos de hospitalidad en Valencia e Italia.
           </p>
         </div>
 
-        {/* Scene 3: Materiality & Spatial Geometry */}
+        {/* Scene 3: Projects Preview */}
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center text-center max-w-2xl mx-auto px-4"
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
           style={{
             opacity: op3,
             pointerEvents: op3 > 0.3 ? "auto" : "none",
             transform: "translate3d(0, 0, 0)",
             willChange: "opacity",
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
           }}
         >
-          <div className="flex items-center gap-2 mb-4 text-[#C2A77A]">
-            <Compass className="w-4 h-4" />
-            <span className="editorial-mono tracking-[0.2em]">Nobleza Matérica</span>
-          </div>
-          <h2 className="editorial-title text-3xl sm:text-4xl md:text-5xl text-[#EDEAE4] mb-4 font-light">
-            La pureza de la cal, la roca calcárea y el roble sereno
-          </h2>
-          <p className="text-xs sm:text-sm text-[#A6A095] tracking-wide max-w-md font-light">
-            Diálogo entre arquitectura vernácula mediterránea y rigor técnico contemporáneo.
-          </p>
-        </div>
-
-        {/* Scene 4: Exploration / Continuation */}
-        <div
-          className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
-          style={{
-            opacity: op4,
-            pointerEvents: op4 > 0.3 ? "auto" : "none",
-            transform: "translate3d(0, 0, 0)",
-            willChange: "opacity",
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
-          }}
-        >
-          <span className="editorial-mono text-[#C2A77A] mb-3 tracking-[0.25em]">
-            Portafolio Proyectual
+          <span className="font-serif text-[#b49775] mb-3 tracking-[0.25em] text-xs uppercase">
+            Portafolio
           </span>
-          <h2 className="editorial-title text-4xl sm:text-6xl text-[#EDEAE4] mb-6">
+          <h2 className="font-serif text-3xl sm:text-5xl text-[#f5f2ed] mb-6 font-normal drop-shadow-lg">
             Colección de Espacios
           </h2>
-          <div className="flex flex-wrap items-center justify-center gap-3 text-xs tracking-wider text-[#D9D2C3]">
-            <span className="px-3.5 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md shadow-lg">
-              01. Masseria Contemporánea
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs tracking-wider text-[#f5f2ed]">
+            <span className="px-4 py-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md shadow-lg">
+              Residencia Privada
             </span>
-            <span className="px-3.5 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md shadow-lg">
-              02. Residencia Privada
+            <span className="px-4 py-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md shadow-lg">
+              Hospitality & Resort
             </span>
-            <span className="px-3.5 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md shadow-lg">
-              03. Boutique Hotel Aurea
-            </span>
-            <span className="px-3.5 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md shadow-lg">
-              04. Showroom Corporativo
+            <span className="px-4 py-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md shadow-lg">
+              Boutique Hotel Aurea
             </span>
           </div>
         </div>
       </div>
 
-      {/* Bottom status & scroll indicator */}
-      <div className="flex items-end justify-between text-xs text-[#A6A095] tracking-widest font-sans uppercase">
+      {/* Bottom scroll cue */}
+      <div className="flex items-end justify-between text-xs text-[#EDEAE4]/80 tracking-widest font-sans uppercase">
         <div className="flex items-center gap-3">
-          <div className="w-20 sm:w-32 h-[2px] bg-white/10 overflow-hidden rounded-full">
+          <div className="w-20 sm:w-32 h-[2px] bg-white/20 overflow-hidden rounded-full">
             <div
-              className="h-full bg-[#C2A77A] transition-transform duration-100 ease-out origin-left"
+              className="h-full bg-[#b49775] transition-transform duration-100 ease-out origin-left"
               style={{ transform: `scaleX(${Math.max(0.04, progress)})` }}
             />
           </div>
-          <span className="text-[10px] text-[#C2A77A] font-mono">
-            {progress < 0.98 ? "SCROLL DOWN" : "CONTINUE EXPLORING"}
+          <span className="text-[10px] text-[#b49775] font-sans">
+            {progress < 0.98 ? "SCROLL DOWN" : "DESCUBRIR ESTUDIO"}
           </span>
         </div>
 
-        <div className="flex items-center gap-2 text-white/50 text-[10px]">
-          <span>SCROLL TO EXPLORE</span>
-          <ArrowDown className="w-3.5 h-3.5 animate-bounce text-[#C2A77A]" />
+        <div className="flex items-center gap-2 text-[#f5f2ed]/80 text-[10px]">
+          <span>SCROLL</span>
+          <ArrowDown className="w-3.5 h-3.5 animate-bounce text-[#b49775]" />
         </div>
       </div>
     </div>
