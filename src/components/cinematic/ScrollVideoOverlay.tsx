@@ -61,7 +61,7 @@ export function ScrollVideoOverlay({ progress }: ScrollVideoOverlayProps) {
           </p>
           <div className="relative w-[300px] sm:w-[460px] md:w-[580px] h-[120px] sm:h-[160px] md:h-[200px] mb-2 drop-shadow-2xl">
             <Image
-              src="/media/images/brand/logo.png"
+              src="/media/images/brand/logo-light.png"
               alt="SENSE by Stefania Del Papa"
               fill
               priority

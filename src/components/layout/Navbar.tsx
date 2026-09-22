@@ -39,7 +39,7 @@ export function Navbar() {
         <Link href="/" className="group flex items-center gap-3">
           <div className="relative w-28 sm:w-36 h-10 sm:h-12 transition-transform duration-300 group-hover:scale-105">
             <Image
-              src="/media/images/brand/logo.png"
+              src={scrolled ? "/media/images/brand/logo.png" : "/media/images/brand/logo-light.png"}
               alt="SENSE by Stefania Del Papa"
               fill
               className="object-contain"

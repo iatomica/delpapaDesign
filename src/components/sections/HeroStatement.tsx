@@ -10,7 +10,7 @@ export function HeroStatement() {
           src="/media/images/sections/statement-flare.png"
           alt="Destello de precisión, materia y sensibilidad"
           fill
-          className="object-contain filter brightness-105"
+          className="object-contain filter brightness-105 mix-blend-multiply"
         />
       </div>
 
